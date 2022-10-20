@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "EmployeeTwo.C": "cpp"
+        "EmployeeTwo.C": "cpp",
+        "employee.h": "c"
     }
 }

@@ -2,7 +2,7 @@
 
 #include <stdlib.h> 
 
-#include "employee.h" 
+#include "Employee.h" 
 
 int main(void){ 
 
