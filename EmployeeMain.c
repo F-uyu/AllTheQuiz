@@ -12,6 +12,10 @@ int main(void){
 
     PtrToEmployee searchEmployeeByName(const Employee table[], int sizeTable, char * nameToFind); 
 
+    PtrToEmployee searchEmployeeByPhone(const Employee table[], int sizeTable, char * phoneInc); 
+
+    PtrToEmployee searchEmployeeBySalary(const Employee table[], int sizeTable, double thing); 
+
  
 
     //defined in employeeTable.c 
