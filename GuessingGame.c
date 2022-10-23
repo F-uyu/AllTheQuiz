@@ -2,19 +2,20 @@
 #include <stdlib.h>
 
 int MAX = 100;
-
+FILE *filething;
 int main(){
-    int i = 0;
-    //FILE *filething;
+    char line[255];
+    filething = fopen("number.txt", "r");
+    printf("%s\n", line);
+    if (ftell(filething) != 0){
+        fscanf(filething, "%d", &MAX);
+    }
+    fclose(filething);
+    printf("%d \n", MAX);
     //filething = fopen("number.txt", "w");
     //fputs("10\n", filething);
     //fclose(filething);
-    //filething = fopen("number.txt", "r");
-    fscanf(filething, "%d", &i);
-    if (ftell(filething) != 0){
-        MAX = fscanf(filething, "%d", &MAX);
-    }
-    fclose(filething);
+    
     int guesses, actualguess, option, maxnumber;
     int win = 0;
     int random;
@@ -65,6 +66,9 @@ int main(){
                 printf("Number generated between 0 and MAX\n");
                 break;
             case 3:
+                filething = fopen("number.txt", "w");
+                fprintf(filething, "%d", MAX);
+                fclose(filething);
                 printf("Thanks for playing!");
         }
     }while (option != 3);
