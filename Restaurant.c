@@ -23,7 +23,7 @@ double getcost(PtrtoItem thing, int num){
 char* getname(PtrtoItem thing, int num){
     return thing[num].item;
 }
-
+//start
 int main(int argc, char *argv[]){
     if (argc != 3){
         printf("You have too less or too many arguments. First argument is tax. The second is tip.");
