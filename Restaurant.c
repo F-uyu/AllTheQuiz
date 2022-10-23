@@ -2,24 +2,42 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-int main(int argc, char *argv[]){
-    srand(time(NULL));
-    char name[4] = {"Salad", "Soup", "Sandwich", "Pizza"};
-    double price[4] = {9.95, 4.55, 13.25, 22.35};
-    long tax = argv[1];
-    long tip = argv[2];
-    long tax1 = tax/100;
-    long tip1 = tip/100;
-    int r = rand() % 4;
-    char item = name[r];
-    double price1 = price[r];
-    double test = price[r] * tip;
-    printf("The meal cost is %d\n", price1);
-    printf("The tip amount is %d\n", price1 * tip1);
-    printf("The tax amount is %d\n", price1 * tax1);
-    printf("The total meal is %d\n", price1 + price1 * tip1 + price1 * tax1);
 
+typedef struct {
+    char *item;
+    double price;
+
+}Item, *PtrtoItem;
+
+Item Itemtable[] = 
+{
+    {"Salad", 9.95},
+    {"Soup", 4.55},
+    {"Sandwich", 13.25},
+    {"Pizza", 22.35},
+};
+
+double getcost(PtrtoItem thing, int num){
+    return thing[num].price;
+}
+char* getname(PtrtoItem thing, int num){
+    return thing[num].item;
+}
+
+int main(int argc, char *argv[]){
+    if (argc != 3){
+        printf("You have too less or too many arguments. First argument is tax. The second is tip.");
+        exit(1);
+    }
+    srand(time(NULL));
+    double tax = atof(argv[1])/100;
+    double tip = atof(argv[2])/100;
+    int r = rand() % 4;
+    double price = getcost(Itemtable, r);
+    printf("The price is %0.2f\n", price);
+    printf("The tax is %0.2f\n", price * tax);
+    printf("The tip is %0.2f\n", price * tip);
+    printf("The total bill is %0.2f\n", price + price * tax + price * tip);
     
-    
-    
+    return 0;
 }
