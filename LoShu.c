@@ -6,76 +6,80 @@
 int main(){
     int count = 0;
     srand(time(NULL));
-    int isMagic = 0;
+    int isUnique = 0;
+    int isColumn = 0;
+    int isRow = 0;
+    int isDia = 0;
     int check[10] = {0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0};
     int arrayTest[3][3] = {
-        {6, 1, 8},
-        {7, 5, 3},
-        {2, 9 ,4}
+        {2, 7, 6},
+        {9, 5, 1},
+        {4, 3 ,8}
     };
     do{
-        /*for (int i = 0; i <3; i++){
+        for (int i = 0; i <3; i++){
             for (int j = 0; j < 3; j++){
                 int randomnumber = (rand() % 9) + 1;
                 arrayTest[i][j] = randomnumber;
             }
-        }*/
+        }
         for (int i  = 0; i < 3; i++){
             for (int j =0 ; j < 3; j++){
                 int num = arrayTest[i][j];
                 check[num] = check[num] + 1;
                 if (check[num] > 1){
-                    isMagic = 1;
+                    isUnique = 1;
                 }
             }
         }
         for (int i = 0; i < 3; i++){
-            int check = 0;
+            int tester = 0;
             for (int j = 0; j < 3; j++){
-                check += arrayTest[i][j];
+                tester += arrayTest[i][j];
             }
-            if (check == 15){
-                isMagic = 0;
+            if (tester == 15){
+                isRow = 0;
             }
             else{
-                isMagic = 1;
+                isRow = 1;
+                break;
             }
         }
         for (int i = 0; i < 3; i++){
-            int check = 0;
+            int tester = 0;
             for (int j = 0; j < 3; j++){
-                check += arrayTest[j][i];
+                tester += arrayTest[j][i];
             }
-            if (check == 15){
-                isMagic = 0;
+            if (tester == 15){
+                isColumn = 0;
             }
             else{
-                isMagic = 1;
+                isColumn = 1;
+                break;
             }
         }
-        if (isMagic == 0){
-            if ((arrayTest[0][0] + arrayTest[1][1] + arrayTest[2][2]) == (arrayTest[0][2] + arrayTest[1][1] + arrayTest[2][0])){
-                isMagic = 0;
+        if (isUnique == 0){
+            if ((arrayTest[0][0] + arrayTest[1][1] + arrayTest[2][2]) == (15) && (15) == (arrayTest[0][2] + arrayTest[1][1] + arrayTest[2][0])){
+                isDia = 0;
             }
             else{
-                isMagic = 1;
+                isDia = 1;
             }
         }
-        for (int i = 0; i <3; i++){
-            for (int j = 0; j < 3; j++){
-                printf("%d | ", arrayTest[i][j]);
-            }
-            printf("\n");
-        }
-        for (int i = 0; i < 10; i++){
-            check[i] = 0;
-        }
-        if (isMagic == 1){
+        
+        if ((isUnique + isRow + isColumn + isDia) != 0){
             count++;
         }
+        
     
-    } while (isMagic != 0);
+    } while ((isUnique + isRow + isColumn + isDia) != 0);
     
-    
+    for (int i = 0; i <3; i++){
+        for (int j = 0; j < 3; j++){
+            printf("%d | ", arrayTest[i][j]);
+        }
+        printf("\n");
+    }
+    printf("%d", count);
     return 0;
 }
