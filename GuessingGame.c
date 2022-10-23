@@ -1,9 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int MAX = 10;
+int MAX = 100;
 
 int main(){
+    int i = 0;
+    //FILE *filething;
+    //filething = fopen("number.txt", "w");
+    //fputs("10\n", filething);
+    //fclose(filething);
+    //filething = fopen("number.txt", "r");
+    fscanf(filething, "%d", &i);
+    if (ftell(filething) != 0){
+        MAX = fscanf(filething, "%d", &MAX);
+    }
+    fclose(filething);
     int guesses, actualguess, option, maxnumber;
     int win = 0;
     int random;
